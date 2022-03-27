@@ -1,0 +1,22 @@
+<h1>Book detail</h1>
+  <table>
+        <tr>
+          <td><%=image_tag @book.user.get_profile_image(40,40) %></td>
+          <td rouwspan="2"><%=@book.title %></td>
+          <td rouwspan="2"><%=@book.body %></td>
+          <% if @book.user==current_user %>
+          <td rouwspan="2">
+              <%=link_to "Edit",edit_book_path(@book) %>
+          </td>
+          <td rouwspan="2">
+              <%=link_to "Destroy",book_path(@book),method: :delete %>
+          </td>
+          <% else %>
+            <td rouwspan="2"></td>
+            <td rouwspan="2"></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td><%=@book.user.name %></td>
+        </tr>
+  </table>
