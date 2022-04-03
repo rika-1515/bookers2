@@ -1,3 +1,11 @@
+<% if flash[:newb] %>
+  <p id="notice"><%=flash[:newb] %></p>
+<% end %>
+
+<% if flash[:upb] %>
+  <p id="notice"><%=flash[:upb] %></p>
+<% end %>
+
 <%=render 'users/user.newbook',user:@user,book:@book_new %>
 
 <h1>Book detail</h1>
