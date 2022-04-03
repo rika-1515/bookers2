@@ -1,0 +1,38 @@
+<h1>User info</h1>
+<table>
+  <% user.each do |user| %>
+    <tr>
+      <td><%=image_tag book.user.get_profile_image(40,40) %></td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>name</td>
+      <td><%=user.name %></td>
+    </tr>
+
+    <tr>
+      <td>introduction</td>
+      <td></td>
+    </tr>
+<% if @user==current_user %>
+  <li>
+    <%=link_to "プロフィール編集",edit_user_path(@user) %>
+  </li>
+<% end %>
+
+</table>
+
+
+
+<h1>New book</h1>
+  <%=form_with model:@book do |f| %>
+    <h4>Title</h4>
+      <%=f.text_field:title %>
+    <h4>Opinion</h4>
+      <%=f.text_area:body %>
+
+    <div>
+    <%=f.submit 'Create Book' %>
+    </div>
+  <% end %>
