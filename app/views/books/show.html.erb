@@ -6,24 +6,30 @@
   <p id="notice"><%=flash[:upb] %></p>
 <% end %>
 
+<div class="container">
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
       <%=render 'users/user.newbook',user:@user,book:@book_new %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h1>Book detail</h1>
-      <table>
+      <h2>Book detail</h2>
+        <table class="table">
             <tr>
-              <td><%=image_tag @book.user.get_profile_image(40,40) %></td>
+              <td><%=image_tag @book.user.get_profile_image(100,100) %></td>
               <td rouwspan="2"><%=@book.title %></td>
               <td rouwspan="2"><%=@book.body %></td>
               <% if @book.user==current_user %>
               <td rouwspan="2">
-                  <%=link_to "Edit",edit_book_path(@book) %>
+                <%= link_to edit_book_path(@book) ,class:"btn btn-sm btn-success edit_book_437" do %>
+                Edit
+                <% end %>
               </td>
               <td rouwspan="2">
-                  <%=link_to "Destroy",book_path(@book),method: :delete %>
+                <%= link_to book_path(@book),method: :delete ,class:"btn btn-sm btn-danger destroy_book_457" do %>
+                Destroy
+                <% end %>
+
               </td>
               <% else %>
                 <td rouwspan="2"></td>
@@ -31,9 +37,14 @@
               <% end %>
             </tr>
             <tr>
-              <td><%=@book.user.name %></td>
+              <td>
+                <%= link_to user_path(@user.id) do %>
+                <%=@book.user.name %>
+                <% end %>
+              </td>
             </tr>
       </table>
+      </div>
     </div>
   </div>
 </div>
